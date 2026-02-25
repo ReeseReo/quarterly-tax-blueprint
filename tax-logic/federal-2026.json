@@ -1,0 +1,62 @@
+{
+  "tax_year": 2026,
+  "source": "IRS Rev. Proc. 2025-32, Form 1040-ES (2026)",
+  "ss_wage_base": 18450000,
+  "se_tax_rate_ss": 0.124,
+  "se_tax_rate_medicare": 0.029,
+  "se_tax_base_factor": 0.9235,
+  "se_deduction_factor": 0.50,
+  "additional_medicare_rate": 0.009,
+  "additional_medicare_threshold": {
+    "single": 20000000,
+    "mfj": 25000000,
+    "hoh": 20000000,
+    "mfs": 12500000
+  },
+  "standard_deduction": {
+    "single": 1610000,
+    "mfj": 3220000,
+    "hoh": 2415000,
+    "mfs": 1610000
+  },
+  "qbi_simplified_threshold": {
+    "single": 20177500,
+    "mfj": 40355000,
+    "hoh": 20177500
+  },
+  "brackets": {
+    "single": [
+      { "min": 0, "max": 1240000, "rate": 0.10 },
+      { "min": 1240000, "max": 5040000, "rate": 0.12 },
+      { "min": 5040000, "max": 10570000, "rate": 0.22 },
+      { "min": 10570000, "max": 20177500, "rate": 0.24 },
+      { "min": 20177500, "max": 25622500, "rate": 0.32 },
+      { "min": 25622500, "max": 64060000, "rate": 0.35 },
+      { "min": 64060000, "max": 999999999999, "rate": 0.37 }
+    ],
+    "mfj": [
+      { "min": 0, "max": 2480000, "rate": 0.10 },
+      { "min": 2480000, "max": 10080000, "rate": 0.12 },
+      { "min": 10080000, "max": 21140000, "rate": 0.22 },
+      { "min": 21140000, "max": 40355000, "rate": 0.24 },
+      { "min": 40355000, "max": 51245000, "rate": 0.32 },
+      { "min": 51245000, "max": 76870000, "rate": 0.35 },
+      { "min": 76870000, "max": 999999999999, "rate": 0.37 }
+    ],
+    "hoh": [
+      { "min": 0, "max": 1770000, "rate": 0.10 },
+      { "min": 1770000, "max": 6745000, "rate": 0.12 },
+      { "min": 6745000, "max": 10570000, "rate": 0.22 },
+      { "min": 10570000, "max": 20177500, "rate": 0.24 },
+      { "min": 20177500, "max": 25620000, "rate": 0.32 },
+      { "min": 25620000, "max": 64060000, "rate": 0.35 },
+      { "min": 64060000, "max": 999999999999, "rate": 0.37 }
+    ]
+  },
+  "quarterly_deadlines": [
+    { "quarter": 1, "due_date": "2026-04-15", "period": "Jan 1 – Mar 31" },
+    { "quarter": 2, "due_date": "2026-06-15", "period": "Apr 1 – May 31" },
+    { "quarter": 3, "due_date": "2026-09-15", "period": "Jun 1 – Aug 31" },
+    { "quarter": 4, "due_date": "2027-01-15", "period": "Sep 1 – Dec 31" }
+  ]
+}
