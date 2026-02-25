@@ -90,3 +90,17 @@ dialog { border: none; border-radius: 16px; max-width: 360px; width: calc(100% -
 @media (min-width: 768px) {
   .pricing-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+.line-with-tip { display: inline-flex; align-items: center; gap: 6px; }
+.tip-icon { width: 18px; height: 18px; border-radius: 999px; border: 1px solid #d0d5dd; background: #fff; color: #475467; font-size: 12px; line-height: 1; padding: 0; }
+.inline-link { background: none; border: 0; color: #1b6b4a; text-decoration: underline; width: auto; height: auto; font-weight: 600; font-size: 14px; padding: 0; }
+.upsell-strip { margin-top: 12px; background: #f9fafb; border: 1px solid #eaecf0; border-radius: 12px; padding: 12px; color: #475467; font-size: 14px; }
+.upsell-strip a { color: #1b6b4a; font-weight: 600; }
+
+.breadcrumb-link { display: inline-block; margin: 24px 0 12px; color: #1b6b4a; text-decoration: none; }
+.how-to-pay-page h2 { margin-top: 24px; margin-bottom: 8px; font-size: 24px; }
+.how-to-pay-page h3 { margin-top: 20px; margin-bottom: 8px; font-size: 18px; }
+.how-to-pay-page p, .how-to-pay-page li { color: #475467; }
+.how-to-pay-page ol { padding-left: 20px; }
+.how-to-pay-cta { margin-top: 24px; }
+.footer-disclaimer { font-size: 12px; color: #667085; margin-top: 16px; margin-bottom: 24px; }
