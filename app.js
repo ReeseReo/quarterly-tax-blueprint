@@ -153,13 +153,32 @@ formatOnBlur(form.income);
 formatOnBlur(form.expenses);
 formatOnBlur(form.w2);
 
+function resolveConfigYear() {
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const jan15 = new Date(currentYear, 0, 15, 23, 59, 59, 999);
+  return now > jan15 ? currentYear : currentYear - 1;
+}
+
+async function loadTaxConfig() {
+  const preferredYear = resolveConfigYear();
+  const fallbackYears = [preferredYear, 2026, 2025];
+  const uniqueYears = [...new Set(fallbackYears)];
+
+  for (const year of uniqueYears) {
+    try {
+      const response = await fetch(`./tax-logic/federal-${year}.json`);
+      if (!response.ok) continue;
+      taxConfig = await response.json();
+      return;
+    } catch {
+      // Try next available config year.
+    }
+  }
+
+  results.classList.remove('hidden');
+  results.innerHTML = '<p class="callout warning">Could not load tax configuration. Please refresh the page.</p>';
+}
+
 fillStates();
-fetch('./tax-logic/federal-2025.json')
-  .then((res) => res.json())
-  .then((json) => {
-    taxConfig = json;
-  })
-  .catch(() => {
-    results.classList.remove('hidden');
-    results.innerHTML = '<p class="callout warning">Could not load tax configuration. Please refresh the page.</p>';
-  });
+loadTaxConfig();
