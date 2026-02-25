@@ -34,19 +34,19 @@ export function calculateQuarterlyTax(inputs, config) {
   const netSeIncome = Math.max(0, inputs.incomeCents - inputs.expensesCents);
   const seTaxBase = Math.round(netSeIncome * config.se_tax_base_factor);
   const ssTaxableBase = Math.min(seTaxBase, config.ss_wage_base);
-  const ssTax = Math.round(ssTaxableBase * config.se_tax_rate_ss);
-  const medicareTax = Math.round(seTaxBase * config.se_tax_rate_medicare);
+  const ssTax = Math.round((ssTaxableBase * config.se_tax_rate_ss) / 100) * 100;
+  const medicareTax = Math.round((seTaxBase * config.se_tax_rate_medicare) / 100) * 100;
   const threshold = config.additional_medicare_threshold[inputs.filingStatus] ?? config.additional_medicare_threshold.single;
-  const additionalMedicareTax = seTaxBase > threshold ? Math.round((seTaxBase - threshold) * config.additional_medicare_rate) : 0;
+  const additionalMedicareTax = seTaxBase > threshold ? Math.round(((seTaxBase - threshold) * config.additional_medicare_rate) / 100) * 100 : 0;
   const totalSeTax = ssTax + medicareTax + additionalMedicareTax;
-  const seDeduction = Math.round(totalSeTax * config.se_deduction_factor);
+  const seDeduction = Math.round((totalSeTax * config.se_deduction_factor) / 100) * 100;
   const agi = Math.max(0, netSeIncome - seDeduction);
   const standardDeduction = config.standard_deduction[inputs.filingStatus];
   const taxableBeforeQbi = Math.max(0, agi - standardDeduction);
   const qbi = Math.max(0, netSeIncome - seDeduction);
-  const qbiDeduction = Math.min(Math.round(qbi * 0.2), Math.round(taxableBeforeQbi * 0.2));
+  const qbiDeduction = Math.min(Math.round((qbi * 0.2) / 100) * 100, Math.round((taxableBeforeQbi * 0.2) / 100) * 100);
   const federalTaxableIncome = Math.max(0, agi - standardDeduction - qbiDeduction);
-  const federalIncomeTax = applyBrackets(federalTaxableIncome, config.brackets[inputs.filingStatus]);
+  const federalIncomeTax = Math.round(applyBrackets(federalTaxableIncome, config.brackets[inputs.filingStatus]) / 100) * 100;
   const totalFederalTax = federalIncomeTax + totalSeTax;
   const quarterlyPayment = Math.max(0, totalFederalTax - inputs.w2WithholdingCents) / 4;
 
@@ -85,6 +85,7 @@ export function formatCurrency(cents) {
 
 export function getNextDeadline(deadlines) {
   const now = new Date();
+  now.setHours(0, 0, 0, 0);
   const upcoming = deadlines
     .map((d) => ({ ...d, date: new Date(`${d.due_date}T00:00:00`) }))
     .find((d) => d.date >= now);
