@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,23 +20,23 @@
     <main class="container">
       <section class="hero">
         <h1>Know What You Owe — In 30 Seconds</h1>
-        <p class="subheadline">The quarterly tax calculator built for freelancers, not accountants.</p>
-        <p class="trust">Free to use · Federal + self-employment tax · Takes 30 seconds.</p>
+        <p class="subheadline">The quarterly tax calculator for freelancers. No jargon. No sign-up.</p>
+        <p class="trust">Free forever · Federal + self-employment tax included · Results in 30 seconds</p>
       </section>
 
       <section class="card" id="calculator-card">
         <form id="calculator-form" novalidate>
           <div class="field">
-            <label for="income">What's your projected income for the full year?</label>
+            <label for="income">What's your projected freelance income this year?</label>
             <div class="currency-wrap"><span>$</span><input id="income" name="income" placeholder="e.g. 60,000" inputmode="numeric" /></div>
-            <p class="helper">Your best estimate of total freelance income for the entire tax year, before expenses.</p>
+            <p class="helper">Your best estimate of total freelance and 1099 income for the year, before expenses.</p>
             <p class="error" id="income-error"></p>
           </div>
 
           <div class="field">
             <label for="expenses">Estimated business expenses for the year?</label>
             <div class="currency-wrap"><span>$</span><input id="expenses" name="expenses" placeholder="e.g. 8,000" inputmode="numeric" /></div>
-            <p class="helper">Software, equipment, home office, travel — anything you buy to do your work. Enter $0 if none.</p>
+            <p class="helper">Software, equipment, home office, travel — anything you buy to do your work. Enter $0 if you're not sure.</p>
             <p class="error" id="expenses-error"></p>
           </div>
 
@@ -48,33 +47,34 @@
           </div>
 
           <fieldset class="field">
-            <legend>Filing status?</legend>
+            <legend>Filing status</legend>
             <div class="segmented" role="radiogroup" aria-label="Filing status">
               <label><input type="radio" name="filingStatus" value="single" checked />Single</label>
               <label><input type="radio" name="filingStatus" value="mfj" />Married Filing Jointly</label>
               <label><input type="radio" name="filingStatus" value="hoh" />Head of Household</label>
             </div>
-            <p class="helper">This determines your federal tax bracket. Most single freelancers choose Single.</p>
+            <p class="helper">This sets your federal tax brackets. Most single freelancers choose Single.</p>
           </fieldset>
 
           <details class="field">
             <summary>Already have taxes withheld from a W-2 job?</summary>
+            <label for="w2">Expected W-2 withholding for the year</label>
             <div class="currency-wrap"><span>$</span><input id="w2" name="w2" placeholder="Expected W-2 withholding for the year" inputmode="numeric" /></div>
-            <p class="helper">Find this on your latest pay stub under "Federal Tax Withheld YTD." We'll subtract this from your quarterly estimate.</p>
+            <p class="helper">Check your latest pay stub for "Federal Tax Withheld YTD." We'll subtract it from your quarterly estimate.</p>
           </details>
 
           <button id="calculate" type="submit">Calculate My Quarterly Tax</button>
-          <p class="micro">No sign-up required. Free forever for basic calculations.</p>
+          <p class="micro">No sign-up required. Free forever.</p>
         </form>
       </section>
 
       <section class="features">
-        <article class="feature-card"><h3>📅 Quarterly Deadlines</h3><p>Never miss a payment. We'll remind you 2 weeks early.</p></article>
-        <article class="feature-card"><h3>🧾 Expense Tracking</h3><p>Log expenses by IRS category. Snap receipts with your phone.</p></article>
-        <article class="feature-card"><h3>🧮 Accurate Math</h3><p>SE tax, QBI deduction, standard deduction — all built in.</p></article>
+        <article class="feature-card"><h3>Quarterly Deadlines</h3><p>Never miss a deadline. See exactly when your next payment is due — we show your countdown after you calculate.</p></article>
+        <article class="feature-card"><h3>Expense Tracking</h3><p>Lower your tax bill. Business expenses reduce what you owe — enter yours above and see the impact instantly.</p></article>
+        <article class="feature-card"><h3>Accurate Math</h3><p>See the full breakdown. Self-employment tax, standard deduction, QBI deduction — every line explained in plain English.</p></article>
       </section>
 
-      <blockquote class="quote">“I was totally confused about quarterly taxes. This showed me exactly what I owed in 20 seconds.” — Sarah, Freelance Designer.</blockquote>
+      <blockquote class="quote">"I spent an hour Googling and got more confused. This gave me my number in 20 seconds. I actually know what to pay now."<br />— Sarah, Freelance Designer</blockquote>
 
       <section id="results" class="hidden" role="region" aria-live="polite"></section>
     </main>
@@ -86,7 +86,7 @@
       <input id="email" type="email" placeholder="you@example.com" />
       <div class="modal-actions">
         <button id="close-modal" type="button">Close</button>
-        <button type="button">Notify Me</button>
+        <button id="notify-me" type="button">Notify Me</button>
       </div>
     </dialog>
 
